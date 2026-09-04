@@ -56,10 +56,11 @@
     .notice { margin-top:25px; padding:18px; border:1px solid rgba(227,184,79,.18); border-radius:10px; color:var(--muted); text-align:center; font-size:12px; background:rgba(227,184,79,.05); }
     .notice b { color:var(--gold-soft); }
     .documents { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-    .document { padding:29px; border:1px solid var(--line); border-radius:12px; background:rgba(14,28,31,.86); }
-    .document .icon { width:52px; height:52px; display:grid; place-items:center; margin-bottom:17px; border:1px solid var(--line); border-radius:10px; color:var(--gold-soft); font-size:23px; }
+    .document { padding:24px 26px; border:1px solid rgba(227,184,79,.28); border-radius:14px; background:rgba(50,50,50,.88); transition:transform .25s,border-color .25s,background .25s; }
+    .document:hover { transform:translateY(-4px); border-color:var(--gold); background:rgba(64,62,56,.95); }
+    .document .icon { width:50px; height:50px; display:grid; place-items:center; margin-bottom:17px; border:0; border-radius:11px; color:#f4aa16; background:rgba(104,79,35,.72); font-size:23px; }
     .document h3 { margin-bottom:8px; font-size:20px; }
-    .document p { margin-bottom:18px; color:var(--muted); font-size:13px; line-height:1.9; }
+    .document p { margin-bottom:18px; color:#9b9b98; font-size:13px; line-height:1.9; }
     .document a { color:var(--gold-soft); font-size:13px; font-weight:800; text-decoration:none; }
     .leadership { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
     .leader { padding:20px 22px; border-right:3px solid var(--gold); border-bottom:1px solid rgba(255,255,255,.08); background:rgba(14,28,31,.72); }
@@ -67,6 +68,20 @@
     .leader .name { color:var(--text); font-size:17px; font-weight:700; }
     .programming { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; }
     .programmer { min-width:190px; padding:18px 25px; border:1px solid var(--line); border-radius:10px; color:var(--gold-soft); background:rgba(14,28,31,.72); text-align:center; font-size:16px; font-weight:800; }
+    .discord-banner { width:min(1120px,92%); min-height:142px; margin:0 auto 85px; padding:26px 34px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-radius:12px 12px 12px 0; color:#fff; background:linear-gradient(115deg,#5865f2,#7285d8); box-shadow:0 18px 45px rgba(54,67,170,.2); }
+    .discord-copy { display:flex; align-items:center; gap:18px; }
+    .discord-icon { width:58px; height:58px; display:grid; place-items:center; border-radius:16px; color:#fff; background:rgba(255,255,255,.16); font-size:29px; font-weight:900; }
+    .discord-icon img { width:36px; height:36px; object-fit:contain; }
+    .discord-copy h2 { margin-bottom:3px; font-size:24px; }
+    .discord-copy p { color:rgba(255,255,255,.82); font-size:13px; }
+    .discord-button { display:inline-flex; align-items:center; justify-content:center; min-width:155px; padding:15px 24px; border-radius:10px; color:#5865f2; background:#fff; font-size:14px; font-weight:900; text-decoration:none; transition:transform .25s,box-shadow .25s; }
+    .discord-button:hover { transform:translateY(-3px); box-shadow:0 10px 22px rgba(25,35,105,.24); }
+    .quick-links { width:min(1120px,92%); margin:0 auto 85px; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+    .quick-link { min-height:104px; padding:18px 20px; display:flex; align-items:center; gap:16px; border:1px solid rgba(255,255,255,.07); border-left:3px solid var(--gold); border-radius:4px 14px 14px 4px; color:var(--text); background:rgba(14,28,31,.9); text-decoration:none; transition:transform .25s,border-color .25s,background .25s; }
+    .quick-link:hover { transform:translateY(-4px); border-color:rgba(227,184,79,.6); border-left-color:var(--gold-soft); background:rgba(19,38,41,.96); }
+    .quick-link .icon { flex:0 0 50px; width:50px; height:50px; display:grid; place-items:center; border-radius:11px; color:#f4aa16; background:rgba(104,79,35,.55); font-size:25px; }
+    .quick-link h3 { margin-bottom:3px; font-size:16px; }
+    .quick-link p { color:#8f908d; font-size:11px; }
     footer { padding:42px 20px 26px; border-top:1px solid rgba(255,255,255,.08); text-align:center; background:rgba(2,7,8,.65); }
     footer img { width:58px; height:58px; object-fit:contain; transform:translateY(-10px); }
     footer h2 { margin:-4px 0 1px; color:var(--gold-soft); font-size:25px; letter-spacing:1px; }
@@ -77,13 +92,16 @@
     .reveal.visible { opacity:1; transform:none; }
     @media (max-width:760px) { header { height:68px; } nav { display:none; } .brand img { width:42px; height:42px; } .stats { grid-template-columns:1fr; margin-top:-35px; } .rules,.documents,.leadership { grid-template-columns:1fr; } .section { margin-bottom:78px; } }
     @media (max-width:480px) { .hero { min-height:630px; padding-top:45px; } .actions { flex-direction:column; } .button { width:100%; } .rule { padding:70px 20px 20px; } .number { right:20px; top:20px; } }
+    @media (max-width:600px) { .discord-banner { flex-direction:column; align-items:stretch; padding:24px 20px; text-align:center; } .discord-copy { justify-content:center; flex-direction:column; gap:10px; } .discord-button { width:100%; } }
+    @media (max-width:1000px) { .quick-links { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:760px) { .quick-links { grid-template-columns:1fr; gap:14px; } }
   </style>
 </head>
 <body>
   <div class="stars" aria-hidden="true"></div>
   <header>
     <a class="brand" href="#home" aria-label="العودة إلى الرئيسية"><img src="border-guard-logo.png" alt="شعار حرس الحدود"><span>حرس الحدود</span></a>
-    <nav aria-label="التنقل الرئيسي"><a href="#home">الرئيسية</a><a href="#rules">القوانين</a><a href="#leadership">القيادات</a><a href="#documents">المصادر</a></nav>
+    <nav aria-label="التنقل الرئيسي"><a href="#home">الرئيسية</a><a href="#rules">القوانين</a><a href="#leadership">القيادات</a></nav>
   </header>
   <main>
     <section class="hero" id="home">
@@ -93,7 +111,7 @@
         <h1>حرس الحدود</h1>
         <h2>مدينة ثرونز</h2>
         <p>نظام القوانين والتعليمات الخاص بحرس الحدود. الالتزام بالقوانين واجب على جميع أفراد القطاع، حفاظًا على النظام والانضباط وهيبة المدينة.</p>
-        <div class="actions"><a class="button primary" href="#rules">استعراض القوانين</a><a class="button" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1-ihG5LLNdqGh7K_OnzcEb-t_zhJTrbjYFQ--F_EzqBA/edit?usp=sharing">جدول حرس الحدود</a><a class="button" target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1-PRAFOwT6ZKVUdoDDdR-nJsmf7PPqVRuMfvJARjzHWQ/edit?usp=sharing">مستند حرس الحدود</a></div>
+        <div class="actions"><a class="button primary" href="#rules">استعراض القوانين</a></div>
       </div>
     </section>
     <section class="stats" aria-label="إحصائيات القطاع"><div class="stat reveal"><strong>18</strong><span>قانون أساسي</span></div><div class="stat reveal"><strong>24/7</strong><span>الانضباط والجاهزية</span></div><div class="stat reveal"><strong>100%</strong><span>الالتزام بالأنظمة</span></div></section>
@@ -127,7 +145,8 @@
       <article class="rule reveal"><div class="number">17</div><h3>مدة السجن</h3><p>أقصى مدة لسجن المواطن 15 شهرًا، وتصبح 20 شهرًا بإذن ضابط أو قيادة.</p></article>
       <article class="rule reveal"><div class="number">18</div><h3>سحب السلاح</h3><p>يسمح بسحب السلاح عند إطلاق النار أمامك أو إذا كان الشخص مسقطًا وفي يده السلاح.</p></article>
     </div><div class="notice"><b>تنبيه:</b> هذه القوانين قابلة للتعديل في أي وقت.</div></section>
-    <section class="section" id="documents"><div class="section-heading"><div class="eyebrow">OFFICIAL RESOURCES</div><h2>المصادر الرسمية</h2><p>الوصول السريع إلى أنظمة حرس الحدود</p></div><div class="documents"><article class="document reveal"><div class="icon">▦</div><h3>جدول حرس الحدود</h3><p>الوصول إلى جدول حرس الحدود ومتابعة المواعيد والبيانات المتعلقة بالقطاع.</p><a target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1-ihG5LLNdqGh7K_OnzcEb-t_zhJTrbjYFQ--F_EzqBA/edit?usp=sharing">فتح الجدول ←</a></article><article class="document reveal"><div class="icon">▤</div><h3>مستند حرس الحدود</h3><p>المستند الرسمي الخاص بحرس الحدود، ويحتوي على المعلومات والتعليمات المعتمدة.</p><a target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1-PRAFOwT6ZKVUdoDDdR-nJsmf7PPqVRuMfvJARjzHWQ/edit?usp=sharing">فتح المستند ←</a></article></div></section>
+    <section class="quick-links" aria-label="الروابط المهمة"><a class="quick-link" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1-ihG5LLNdqGh7K_OnzcEb-t_zhJTrbjYFQ--F_EzqBA/edit?gid=1617518580#gid=1617518580"><span class="icon">▦</span><span><h3>جدول حرس الحدود</h3><p>قائمة الأفراد والمستويات</p></span></a><a class="quick-link" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1-ihG5LLNdqGh7K_OnzcEb-t_zhJTrbjYFQ--F_EzqBA/edit?gid=1436326447#gid=1436326447"><span class="icon">↑</span><span><h3>شروط الترقيات</h3><p>متطلبات الترقية لكل مستوى</p></span></a><a class="quick-link" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1-ihG5LLNdqGh7K_OnzcEb-t_zhJTrbjYFQ--F_EzqBA/edit?gid=2004626336#gid=2004626336"><span class="icon">★</span><span><h3>شروط ترقيات المعتمدين</h3><p>متطلبات اللاعب المعتمد</p></span></a><a class="quick-link" target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1-PRAFOwT6ZKVUdoDDdR-nJsmf7PPqVRuMfvJARjzHWQ/edit?slide=id.p#slide=id.p"><span class="icon">▤</span><span><h3>الدليل الشامل</h3><p>الدليل الكامل لحرس الحدود</p></span></a></section>
+    <section class="discord-banner" aria-label="مجتمع الديسكورد"><div class="discord-copy"><div class="discord-icon"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="شعار ديسكورد"></div><div><h2>انضم إلى مجتمعنا</h2><p>تواصل معنا على ديسكورد مدينة ثرونز</p></div></div><a class="discord-button" target="_blank" rel="noopener" href="https://discord.gg/trz">انضم الآن</a></section>
   </main>
   <footer><img src="border-guard-logo.png" alt="شعار حرس الحدود"><h2>DEV</h2><div class="developer">هيال العتيبي</div><div class="developer">دهام الدوسري</div><p>جميع الحقوق محفوظة لقطاع حرس الحدود</p></footer>
   <button id="top" type="button" aria-label="العودة إلى الأعلى">↑</button>
