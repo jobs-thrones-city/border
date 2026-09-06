@@ -1,0 +1,1167 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>حرس الحدود | مدينة ثرونز</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #d8b15a;
+            --gold-light: #ffe7a0;
+            --gold-dark: #80611f;
+            --bg: #030507;
+            --card: rgba(10, 13, 17, 0.82);
+            --border: rgba(216, 177, 90, 0.25);
+            --text: #f5f1e7;
+            --muted: #9c9c9c;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Cairo", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           النجوم
+        ========================= */
+
+        #stars {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -5;
+            background:
+                radial-gradient(circle at 50% 20%, rgba(216,177,90,.08), transparent 35%),
+                radial-gradient(circle at 10% 90%, rgba(75,105,145,.08), transparent 30%),
+                #030507;
+        }
+
+        .stars,
+        .stars2,
+        .stars3 {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: repeat;
+            pointer-events: none;
+        }
+
+        .stars {
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            box-shadow:
+                20px 40px #fff,
+                90px 120px #fff,
+                170px 70px #fff,
+                250px 180px #fff,
+                340px 90px #fff,
+                450px 250px #fff,
+                530px 110px #fff,
+                640px 330px #fff,
+                730px 160px #fff,
+                820px 70px #fff,
+                920px 280px #fff,
+                1020px 130px #fff,
+                1120px 360px #fff,
+                1210px 180px #fff,
+                1300px 90px #fff,
+                1400px 300px #fff,
+                1500px 140px #fff,
+                1600px 390px #fff,
+                1700px 220px #fff,
+                1800px 80px #fff,
+                1900px 330px #fff;
+            animation: starsMove 45s linear infinite;
+            opacity: .55;
+        }
+
+        .stars2 {
+            width: 1px;
+            height: 1px;
+            background: #d8b15a;
+            box-shadow:
+                50px 100px #d8b15a,
+                140px 230px #fff,
+                300px 40px #d8b15a,
+                430px 300px #fff,
+                570px 190px #d8b15a,
+                680px 70px #fff,
+                790px 260px #d8b15a,
+                940px 120px #fff,
+                1090px 320px #d8b15a,
+                1230px 210px #fff,
+                1360px 60px #d8b15a,
+                1480px 280px #fff,
+                1630px 120px #d8b15a,
+                1780px 350px #fff;
+            animation: starsMove 80s linear infinite reverse;
+            opacity: .7;
+        }
+
+        .stars3 {
+            width: 3px;
+            height: 3px;
+            background: transparent;
+            box-shadow:
+                100px 500px rgba(255,255,255,.8),
+                400px 600px rgba(216,177,90,.9),
+                800px 450px rgba(255,255,255,.7),
+                1200px 650px rgba(216,177,90,.8),
+                1600px 500px rgba(255,255,255,.7),
+                1900px 700px rgba(216,177,90,.7);
+            animation: twinkle 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes starsMove {
+            from { transform: translateY(0); }
+            to { transform: translateY(100vh); }
+        }
+
+        @keyframes twinkle {
+            from { opacity: .25; }
+            to { opacity: 1; }
+        }
+
+        /* =========================
+           شريط علوي
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            background: rgba(3,5,7,.78);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(216,177,90,.15);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+            letter-spacing: .5px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            color: var(--gold-light);
+            box-shadow: 0 0 25px rgba(216,177,90,.15);
+            font-size: 20px;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--gold-light);
+        }
+
+        /* =========================
+           Hero
+        ========================= */
+
+        .hero {
+            min-height: 720px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 80px 20px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(216,177,90,.13),
+                transparent 65%);
+            filter: blur(15px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            border: 1px solid rgba(216,177,90,.35);
+            border-radius: 50px;
+            background: rgba(216,177,90,.06);
+            color: var(--gold-light);
+            font-size: 13px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 35px rgba(216,177,90,.08);
+        }
+
+        .badge span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #65e48b;
+            box-shadow: 0 0 12px #65e48b;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 92px);
+            font-weight: 900;
+            line-height: 1.05;
+            background: linear-gradient(
+                120deg,
+                #fff,
+                var(--gold-light),
+                #fff,
+                #b18a37
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 250%;
+            animation: shine 6s linear infinite;
+            text-shadow: 0 0 50px rgba(216,177,90,.1);
+        }
+
+        @keyframes shine {
+            0% { background-position: 0%; }
+            100% { background-position: 250%; }
+        }
+
+        .hero h2 {
+            margin-top: 18px;
+            font-size: clamp(20px, 3vw, 32px);
+            font-weight: 700;
+            color: #ddd;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 25px auto 35px;
+            color: #8f9398;
+            line-height: 2;
+            font-size: 15px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            text-decoration: none;
+            min-width: 190px;
+            padding: 14px 25px;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            color: white;
+            background: rgba(255,255,255,.03);
+            transition: .3s;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 35px rgba(216,177,90,.12);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #b88d36, #e0bb63);
+            color: #080909;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 15px 45px rgba(216,177,90,.3);
+        }
+
+        /* =========================
+           Stats
+        ========================= */
+
+        .stats {
+            max-width: 1100px;
+            margin: -55px auto 80px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .stat {
+            padding: 30px;
+            text-align: center;
+            border: 1px solid var(--border);
+            background: rgba(10,13,17,.8);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            transition: .35s;
+        }
+
+        .stat:hover {
+            transform: translateY(-7px);
+            border-color: rgba(216,177,90,.55);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--gold-light);
+        }
+
+        .stat-title {
+            color: #8d9196;
+            font-size: 13px;
+        }
+
+        /* =========================
+           Section
+        ========================= */
+
+        .section {
+            width: min(1150px, 92%);
+            margin: 0 auto 110px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title .small {
+            color: var(--gold);
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .section-title h2 {
+            font-size: clamp(30px, 5vw, 48px);
+            margin: 8px 0;
+            font-weight: 900;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           القوانين
+        ========================= */
+
+        .rules {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 17px;
+        }
+
+        .rule {
+            position: relative;
+            padding: 25px 25px 25px 75px;
+            min-height: 120px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 18px;
+            background:
+                linear-gradient(145deg,
+                rgba(255,255,255,.035),
+                rgba(255,255,255,.01));
+            backdrop-filter: blur(12px);
+            overflow: hidden;
+            transition: .35s;
+        }
+
+        .rule::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(
+                transparent,
+                var(--gold),
+                transparent
+            );
+            opacity: .6;
+        }
+
+        .rule:hover {
+            transform: translateY(-5px);
+            border-color: rgba(216,177,90,.4);
+            box-shadow: 0 20px 50px rgba(0,0,0,.35);
+        }
+
+        .rule-number {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            border: 1px solid rgba(216,177,90,.35);
+            background: rgba(216,177,90,.07);
+            color: var(--gold-light);
+            font-weight: 900;
+            font-size: 15px;
+        }
+
+        .rule h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #f3f0e7;
+        }
+
+        .rule p {
+            color: #888e94;
+            line-height: 1.9;
+            font-size: 13px;
+        }
+
+        /* =========================
+           القيادات
+        ========================= */
+
+        .leadership {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 17px;
+        }
+
+        .leader {
+            padding: 22px 25px;
+            border-right: 3px solid var(--gold);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            background: rgba(10,13,17,.8);
+            transition: .35s;
+        }
+
+        .leader:hover {
+            transform: translateY(-5px);
+            border-color: rgba(216,177,90,.55);
+            box-shadow: 0 20px 50px rgba(0,0,0,.35);
+        }
+
+        .leader-role {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--gold-light);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .leader-name {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           الروابط
+        ========================= */
+
+        .documents {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .document-card {
+            position: relative;
+            padding: 35px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: rgba(10,13,17,.8);
+            overflow: hidden;
+            transition: .4s;
+        }
+
+        .document-card::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            left: -60px;
+            bottom: -80px;
+            background: radial-gradient(
+                circle,
+                rgba(216,177,90,.15),
+                transparent 70%
+            );
+        }
+
+        .document-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 70px rgba(216,177,90,.08);
+        }
+
+        .doc-icon {
+            width: 60px;
+            height: 60px;
+            display: grid;
+            place-items: center;
+            border-radius: 17px;
+            background: rgba(216,177,90,.08);
+            border: 1px solid rgba(216,177,90,.25);
+            color: var(--gold-light);
+            font-size: 25px;
+            margin-bottom: 22px;
+        }
+
+        .document-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .document-card p {
+            color: #85898d;
+            font-size: 13px;
+            line-height: 1.9;
+            margin-bottom: 22px;
+        }
+
+        .doc-link {
+            display: inline-flex;
+            text-decoration: none;
+            color: var(--gold-light);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        /* =========================
+           تنبيه
+        ========================= */
+
+        .notice {
+            text-align: center;
+            padding: 25px;
+            margin-top: 35px;
+            border-radius: 17px;
+            border: 1px solid rgba(216,177,90,.18);
+            background: rgba(216,177,90,.04);
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        .notice strong {
+            color: var(--gold-light);
+        }
+
+        /* =========================
+           Footer
+        ========================= */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.07);
+            background: rgba(0,0,0,.4);
+            padding: 50px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-weight: 900;
+            font-size: 20px;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #686d72;
+            font-size: 12px;
+        }
+
+        .dev {
+            margin-top: 28px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .dev span {
+            color: var(--gold);
+            font-weight: 900;
+        }
+
+        /* =========================
+           Scroll top
+        ========================= */
+
+        #topBtn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 48px;
+            height: 48px;
+            border-radius: 15
+        px;
+            border: 1px solid var(--border);
+            background: rgba(10,13,17,.9);
+            color: var(--gold-light);
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+            font-size: 18px;
+            transition: .3s;
+        }
+
+        #topBtn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* =========================
+           Responsive
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                margin-top: -30px;
+            }
+
+            .rules,
+            .documents,
+            .leadership {
+                grid-template-columns: 1fr;
+            }
+
+            .rule {
+                padding-left: 75px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero h2 {
+                font-size: 21px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .rule {
+                padding: 22px;
+                padding-top: 80px;
+            }
+
+            .rule-number {
+                right: 20px;
+                left: auto;
+                top: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="stars"></div>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+            <div>حرس الحدود</div>
+        </div>
+
+        <nav>
+            <a href="#home">الرئيسية</a>
+            <a href="#leadership">القيادات</a>
+            <a href="#rules">القوانين</a>
+            <a href="#documents">المستندات</a>
+        </nav>
+    </header>
+
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                <span></span>
+                نظام حرس الحدود الرسمي
+            </div>
+
+            <h1>حرس الحدود</h1>
+
+            <h2>مدينة ثرونز</h2>
+
+            <p>
+                نظام القوانين والتعليمات الخاص بحرس الحدود.
+                الالتزام بالقوانين واجب على جميع أفراد القطاع،
+                حفاظًا على النظام والانضباط وهيبة المدينة.
+            </p>
+
+            <div class="buttons">
+                <a class="btn btn-primary" href="#rules">
+                    استعراض القوانين
+                </a>
+
+                <a class="btn" target="_blank"
+                   href="https://docs.google.com/spreadsheets/d/1-ihG5LLNdqGh7K_OnzcEb-t_zhJTrbjYFQ--F_EzqBA/edit?usp=sharing">
+                    جدول حرس الحدود
+                </a>
+
+                <a class="btn" target="_blank"
+                   href="https://docs.google.com/presentation/d/1-PRAFOwT6ZKVUdoDDdR-nJsmf7PPqVRuMfvJARjzHWQ/edit?usp=sharing">
+                    مستند حرس الحدود 
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Stats -->
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-number">18</div>
+            <div class="stat-title">قانون أساسي</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">24/7</div>
+            <div class="stat-title">الانضباط والجاهزية</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-title">الالتزام بالأنظمة</div>
+        </div>
+
+    </div>
+
+
+    <!-- Leadership -->
+    <section class="section" id="leadership">
+
+        <div class="section-title">
+            <div class="small">BORDER GUARD LEADERSHIP</div>
+            <h2>قيادات حرس الحدود</h2>
+            <p>القيادات المعتمدة لقطاع حرس الحدود</p>
+        </div>
+
+        <div class="leadership">
+
+            <div class="leader">
+                <span class="leader-role">قائد حرس الحدود</span>
+                <span class="leader-name">تركي القحطاني</span>
+            </div>
+
+            <div class="leader">
+                <span class="leader-role">نائب قائد الحرس الحدود</span>
+                <span class="leader-name">حمني الصيعري</span>
+            </div>
+
+            <div class="leader">
+                <span class="leader-role">مساعد قائد حرس الحدود</span>
+                <span class="leader-name">دهام الدوسري</span>
+            </div>
+
+            <div class="leader">
+                <span class="leader-role">مساعد قائد حرس الحدود</span>
+                <span class="leader-name">معاذ بن عبدالرحمن</span>
+            </div>
+
+            <div class="leader">
+                <span class="leader-role">نائب مساعد قائد حرس الحدود</span>
+                <span class="leader-name">عسكر الغامدي</span>
+            </div>
+
+            <div class="leader">
+                <span class="leader-role">نائب مساعد قائد حرس الحدود</span>
+                <span class="leader-name">سلطان الصيعري</span>
+            </div>
+
+            <div class="leader">
+                <span class="leader-role">نائب مساعد قائد حرس الحدود</span>
+                <span class="leader-name">هيال العتيبي</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Rules -->
+    <section class="section" id="rules">
+
+        <div class="section-title">
+            <div class="small">BORDER GUARD REGULATIONS</div>
+            <h2>قوانين حرس الحدود</h2>
+            <p>القوانين والأنظمة الواجب الالتزام بها</p>
+        </div>
+
+
+        <div class="rules">
+
+            <div class="rule">
+                <div class="rule-number">01</div>
+                <h3>احترام جميع القطاعات</h3>
+                <p>يجب احترام جميع القطاعات داخل المدينة والتعامل معها بكل احترافية.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">02</div>
+                <h3>احترام الضباط والأفراد</h3>
+                <p>يجب احترام جميع ضباط وأفراد مدينة الثريا.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">03</div>
+                <h3>احترام المواطنين</h3>
+                <p>يجب احترام المواطنين وعدم تهديدهم أو استخدام السلطة ضدهم.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">04</div>
+                <h3>تفتيش المواطنين</h3>
+                <p>يمنع تفتيش المواطنين دون سبب واضح ومقنع.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">05</div>
+                <h3>عدم الإساءة للقطاعات</h3>
+                <p>يمنع الإساءة إلى القطاعات الأخرى مثل الهلال الأحمر أو الميكانيكي أو الشرطة.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">06</div>
+                <h3>إسقاط المواطن الأعزل</h3>
+                <p>يمنع منعًا باتًا إسقاط أي مواطن أعزل إلا في الدخول غير الشرعي أو أثناء التهريب.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">07</div>
+                <h3>العهدة العسكرية</h3>
+                <p>يمنع إعطاء أي عهدة عسكرية لأي مواطن.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">08</div>
+                <h3>الصدم الاحترافي</h3>
+                <p>يمنع الصدم الاحترافي داخل الميناء.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">09</div>
+                <h3>مطاردات إدارة الشرطة</h3>
+                <p>يمنع الاشتراك في مطاردة مع إدارة الشرطة دون أخذ الإذن منهم.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">10</div>
+                <h3>التستر على المخالفات</h3>
+                <p>يمنع التستر على مخالفات المواطنين.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">11</div>
+                <h3>التستر على المجرمين</h3>
+                <p>يمنع التستر على المجرمين داخل أو خارج الميناء.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">12</div>
+                <h3>بلاغات المواطنين</h3>
+                <p>يجب أخذ البلاغات من المواطنين بشكل جدي وعدم التهاون بها.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">13</div>
+                <h3>إرشاد المواطنين</h3>
+                <p>يجب إرشاد المواطنين بشكل مناسب داخل أو خارج الميناء.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">14</div>
+                <h3>التمثيل</h3>
+                <p>يمنع الخروج من التمثيل لأي سبب كان.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">15</div>
+                <h3>عدم مقاطعة البلاغات</h3>
+                <p>يمنع مقاطعة البلاغات إلا إذا كان البلاغ للأهمية.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">16</div>
+                <h3>سماع أقوال المجرم</h3>
+                <p>في حال القبض على مجرم يجب سماع جميع أقواله وأخذها بعين الاعتبار.</p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">17</div>
+                <h3>مدة السجن</h3>
+                <p>
+                    أقصى مدة يمكنك فيها سجن المواطن 15 شهر،
+                    ويحق لك السجن 20 شهر في حال أخذت الإذن من ضابط أو قيادة.
+                </p>
+            </div>
+
+            <div class="rule">
+                <div class="rule-number">18</div>
+                <h3>سحب السلاح</h3>
+                <p>
+                    يسمح بسحب السلاح في حالتين:
+                    الأولى شخص مطلق النار أمام عينك،
+                    والثانية إذا كان مسقطًا وفي يده السلاح.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="notice">
+            <strong>تنبيه:</strong>
+            هذه القوانين قابلة للتعديل في أي وقت.
+        </div>
+
+    </section>
+
+
+    <!-- Documents -->
+    <section class="section" id="documents">
+
+        <div class="section-title">
+            <div class="small">OFFICIAL RESOURCES</div>
+            <h2>المصادر الرسمية</h2>
+            <p>الوصول السريع إلى أنظمة حرس الحدود</p>
+        </div>
+
+
+        <div class="documents">
+
+            <div class="document-card">
+
+                <div class="doc-icon">▦</div>
+
+                <h3>جدول حرس الحدود</h3>
+
+                <p>
+                    الوصول إلى جدول حرس الحدود ومتابعة المواعيد
+                    والبيانات المتعلقة بالقطاع.
+                </p>
+
+                <a class="doc-link"
+                   target="_blank"
+                   href="https://docs.google.com/spreadsheets/d/1-ihG5LLNdqGh7K_OnzcEb-t_zhJTrbjYFQ--F_EzqBA/edit?usp=sharing">
+                    فتح الجدول ←
+                </a>
+
+            </div>
+
+
+            <div class="document-card">
+
+                <div class="doc-icon">▤</div>
+
+                <h3>مستند حرس الحدود</h3>
+
+                <p>
+                    المستند الرسمي الخاص بحرس الحدود،
+                    ويحتوي على المعلومات والتعليمات المعتمدة.
+                </p>
+
+                <a class="doc-link"
+                   target="_blank"
+                   href="https://docs.google.com/presentation/d/1-PRAFOwT6ZKVUdoDDdR-nJsmf7PPqVRuMfvJARjzHWQ/edit?usp=sharing">
+                    فتح المستند ←
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-title">
+            ✦ حرس الحدود — مدينة ثرونز
+        </div>
+
+        <p>
+            جميع الحقوق محفوظة لقطاع حرس الحدود
+        </p>
+
+        <div class="dev">
+            DEV — تصميم <span>سهم العتيبي</span>
+        </div>
+
+    </footer>
+
+
+    <!-- زر العودة للأعلى -->
+    <button id="topBtn" onclick="goTop()">↑</button>
+
+
+    <script>
+
+        // ==========================
+        // زر العودة للأعلى
+        // ==========================
+
+        const topBtn = document.getElementById("topBtn");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 500) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+
+        });
+
+        function goTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+
+        // ==========================
+        // ظهور البطاقات أثناء النزول
+        // ==========================
+
+        const cards = document.querySelectorAll(".rule, .document-card, .stat");
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+
+                }
+
+            });
+
+        }, {
+            threshold: 0.1
+        });
+
+
+        cards.forEach(card => {
+
+            card.style.opacity = "0";
+            card.style.transform = "translateY(25px)";
+            card.style.transition =
+                "opacity .7s ease, transform .7s ease, border-color .3s";
+
+            observer.observe(card);
+
+        });
+
+
+        // ==========================
+        // تأثير حركة خفيف مع الماوس
+        // ==========================
+
+        document.addEventListener("mousemove", (e) => {
+
+            const x = (e.clientX / window.innerWidth - 0.5) * 10;
+            const y = (e.clientY / window.innerHeight - 0.5) * 10;
+
+            document.querySelector(".hero-content").style.transform =
+                `translate(${x * .15}px, ${y * .15}px)`;
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
