@@ -19,14 +19,17 @@
         }
 
         :root {
-            --gold: #d8b15a;
-            --gold-light: #ffe7a0;
-            --gold-dark: #80611f;
-            --bg: #030507;
-            --card: rgba(10, 13, 17, 0.82);
-            --border: rgba(216, 177, 90, 0.25);
-            --text: #f5f1e7;
-            --muted: #9c9c9c;
+            --gold: #d9ad45;
+            --gold-light: #ffe8a3;
+            --gold-dark: #8d681c;
+            --green: #25c873;
+            --green-light: #a8ffd0;
+            --green-dark: #087a46;
+            --bg: #020806;
+            --card: rgba(5, 20, 14, 0.86);
+            --border: rgba(37, 200, 115, 0.34);
+            --text: #f4f7e9;
+            --muted: #a1afa7;
         }
 
         html {
@@ -39,6 +42,7 @@
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
+            cursor: none;
         }
 
         /* =========================
@@ -52,9 +56,10 @@
             height: 100%;
             z-index: -5;
             background:
-                radial-gradient(circle at 50% 20%, rgba(216,177,90,.08), transparent 35%),
-                radial-gradient(circle at 10% 90%, rgba(75,105,145,.08), transparent 30%),
-                #030507;
+                radial-gradient(circle at 50% 18%, rgba(217,173,69,.14), transparent 34%),
+                radial-gradient(circle at 12% 82%, rgba(37,200,115,.16), transparent 32%),
+                radial-gradient(circle at 90% 70%, rgba(8,122,70,.12), transparent 30%),
+                var(--bg);
         }
 
         .stars,
@@ -70,54 +75,54 @@
         .stars {
             width: 2px;
             height: 2px;
-            background: #fff;
+            background: var(--green-light);
             box-shadow:
-                20px 40px #fff,
-                90px 120px #fff,
-                170px 70px #fff,
-                250px 180px #fff,
-                340px 90px #fff,
-                450px 250px #fff,
-                530px 110px #fff,
-                640px 330px #fff,
-                730px 160px #fff,
-                820px 70px #fff,
-                920px 280px #fff,
-                1020px 130px #fff,
-                1120px 360px #fff,
-                1210px 180px #fff,
-                1300px 90px #fff,
-                1400px 300px #fff,
-                1500px 140px #fff,
-                1600px 390px #fff,
-                1700px 220px #fff,
-                1800px 80px #fff,
-                1900px 330px #fff;
-            animation: starsMove 45s linear infinite;
-            opacity: .55;
+                20px 40px var(--green-light),
+                90px 120px var(--gold-light),
+                170px 70px var(--green-light),
+                250px 180px var(--gold-light),
+                340px 90px var(--green-light),
+                450px 250px var(--gold-light),
+                530px 110px var(--green-light),
+                640px 330px var(--gold-light),
+                730px 160px var(--green-light),
+                820px 70px var(--gold-light),
+                920px 280px var(--green-light),
+                1020px 130px var(--gold-light),
+                1120px 360px var(--green-light),
+                1210px 180px var(--gold-light),
+                1300px 90px var(--green-light),
+                1400px 300px var(--gold-light),
+                1500px 140px var(--green-light),
+                1600px 390px var(--gold-light),
+                1700px 220px var(--green-light),
+                1800px 80px var(--gold-light),
+                1900px 330px var(--green-light);
+            animation: starsMove 42s linear infinite, starPulse 4s ease-in-out infinite alternate;
+            opacity: .72;
         }
 
         .stars2 {
             width: 1px;
             height: 1px;
-            background: #d8b15a;
+            background: var(--gold);
             box-shadow:
-                50px 100px #d8b15a,
-                140px 230px #fff,
-                300px 40px #d8b15a,
-                430px 300px #fff,
-                570px 190px #d8b15a,
-                680px 70px #fff,
-                790px 260px #d8b15a,
-                940px 120px #fff,
-                1090px 320px #d8b15a,
-                1230px 210px #fff,
-                1360px 60px #d8b15a,
-                1480px 280px #fff,
-                1630px 120px #d8b15a,
-                1780px 350px #fff;
-            animation: starsMove 80s linear infinite reverse;
-            opacity: .7;
+                50px 100px var(--gold),
+                140px 230px var(--green-light),
+                300px 40px var(--gold),
+                430px 300px var(--green-light),
+                570px 190px var(--gold),
+                680px 70px var(--green-light),
+                790px 260px var(--gold),
+                940px 120px var(--green-light),
+                1090px 320px var(--gold),
+                1230px 210px var(--green-light),
+                1360px 60px var(--gold),
+                1480px 280px var(--green-light),
+                1630px 120px var(--gold),
+                1780px 350px var(--green-light);
+            animation: starsMove 68s linear infinite reverse, starPulse 5s ease-in-out infinite alternate-reverse;
+            opacity: .82;
         }
 
         .stars3 {
@@ -125,13 +130,60 @@
             height: 3px;
             background: transparent;
             box-shadow:
-                100px 500px rgba(255,255,255,.8),
+                100px 500px rgba(164,255,194,.8),
                 400px 600px rgba(216,177,90,.9),
-                800px 450px rgba(255,255,255,.7),
+                800px 450px rgba(164,255,194,.7),
                 1200px 650px rgba(216,177,90,.8),
-                1600px 500px rgba(255,255,255,.7),
+                1600px 500px rgba(164,255,194,.7),
                 1900px 700px rgba(216,177,90,.7);
-            animation: twinkle 3s ease-in-out infinite alternate;
+            animation: starsMove 25s linear infinite, twinkle 2.5s ease-in-out infinite alternate;
+        }
+
+        .stars3::before,
+        .stars3::after {
+            content: "";
+            position: absolute;
+            inset: -100% 0 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle, rgba(168,255,208,.95) 0 1px, transparent 2px),
+                radial-gradient(circle, rgba(255,232,163,.9) 0 1px, transparent 2px);
+            background-size: 137px 181px, 223px 257px;
+            background-position: 30px 50px, 90px 110px;
+            animation: starFieldFall 18s linear infinite;
+            opacity: .45;
+        }
+
+        .stars3::after {
+            background-size: 197px 239px, 311px 173px;
+            background-position: 120px 20px, 40px 150px;
+            animation-duration: 30s;
+            animation-direction: reverse;
+            opacity: .3;
+        }
+
+        #mouseStars {
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .mouse-star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--star-color);
+            box-shadow: 0 0 12px var(--star-color), 0 0 22px var(--star-color);
+            animation: mouseStarFade .8s ease-out forwards;
+        }
+
+        @keyframes mouseStarFade {
+            0% { opacity: 1; transform: scale(1) translateY(0); }
+            100% { opacity: 0; transform: scale(0) translateY(18px); }
         }
 
         @keyframes starsMove {
@@ -144,6 +196,61 @@
             to { opacity: 1; }
         }
 
+        @keyframes starPulse {
+            from { filter: brightness(.7); }
+            to { filter: brightness(1.45); }
+        }
+
+        @keyframes starFieldFall {
+            from { transform: translateY(0); }
+            to { transform: translateY(100%); }
+        }
+
+        #cursor-dot,
+        #cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 2000;
+            transform: translate(-50%, -50%);
+        }
+
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold-light);
+            box-shadow: 0 0 10px var(--gold), 0 0 24px var(--green);
+        }
+
+        #cursor-ring {
+            width: 34px;
+            height: 34px;
+            border: 1px solid var(--green-light);
+            border-radius: 50%;
+            box-shadow: 0 0 14px rgba(37,200,115,.45), inset 0 0 10px rgba(217,173,69,.2);
+            transition: width .2s ease, height .2s ease, border-color .2s ease;
+        }
+
+        body:has(a:hover) #cursor-ring,
+        body:has(button:hover) #cursor-ring {
+            width: 48px;
+            height: 48px;
+            border-color: var(--gold-light);
+        }
+
+        @media (pointer: coarse) {
+            body {
+                cursor: auto;
+            }
+
+            #cursor-dot,
+            #cursor-ring {
+                display: none;
+            }
+        }
+
         /* =========================
            شريط علوي
         ========================= */
@@ -152,7 +259,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            height: 75px;
+            height: 88px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -165,21 +272,17 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             font-weight: 900;
             letter-spacing: .5px;
+            font-size: 20px;
         }
 
-        .brand-icon {
-            width: 42px;
-            height: 42px;
-            display: grid;
-            place-items: center;
-            border: 1px solid var(--gold);
-            border-radius: 12px;
-            color: var(--gold-light);
-            box-shadow: 0 0 25px rgba(216,177,90,.15);
-            font-size: 20px;
+        .brand-logo {
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 12px rgba(216,177,90,.28));
         }
 
         nav {
@@ -229,6 +332,20 @@
             position: relative;
             max-width: 900px;
             z-index: 2;
+        }
+
+        .hero-logo {
+            display: block;
+            width: clamp(135px, 18vw, 205px);
+            height: auto;
+            margin: 0 auto 24px;
+            filter: drop-shadow(0 0 24px rgba(216,177,90,.3));
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         .badge {
@@ -409,6 +526,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 17px;
+        }
 
         .rule {
             position: relative;
@@ -475,6 +593,87 @@
         }
 
         /* =========================
+           البروتوكولات
+        ========================= */
+
+        .protocols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+
+        .protocol {
+            position: relative;
+            padding: 24px;
+            min-height: 155px;
+            border: 1px solid rgba(216,177,90,.2);
+            border-radius: 18px;
+            background: linear-gradient(145deg, rgba(216,177,90,.08), rgba(255,255,255,.02));
+            overflow: hidden;
+            transition: .35s;
+        }
+
+        .protocol::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 3px;
+            background: linear-gradient(transparent, var(--gold), transparent);
+        }
+
+        .protocol:hover {
+            transform: translateY(-5px);
+            border-color: rgba(216,177,90,.55);
+            box-shadow: 0 20px 50px rgba(216,177,90,.1);
+        }
+
+        .protocol-code {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 76px;
+            padding: 5px 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(216,177,90,.35);
+            border-radius: 8px;
+            color: var(--gold-light);
+            background: rgba(216,177,90,.08);
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            direction: ltr;
+        }
+
+        .protocol h3 {
+            margin-bottom: 8px;
+            color: #f3f0e7;
+            font-size: 17px;
+        }
+
+        .protocol p {
+            color: #9a9da1;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .protocol-alert {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            border: 1px solid rgba(226,166,67,.4);
+            border-radius: 16px;
+            background: rgba(226,166,67,.08);
+            color: #e7d5a4;
+        }
+
+        .protocol-alert strong {
+            color: var(--gold-light);
+            white-space: nowrap;
+        }
+
+        /* =========================
            القيادات
         ========================= */
 
@@ -510,6 +709,67 @@
             color: var(--text);
             font-size: 18px;
             font-weight: 700;
+        }
+
+        /* =========================
+           المسميات
+        ========================= */
+
+        .titles-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+        }
+
+        .title-card {
+            position: relative;
+            min-height: 180px;
+            padding: 24px 18px;
+            text-align: center;
+            border: 1px solid rgba(37,200,115,.25);
+            border-radius: 18px;
+            background: linear-gradient(145deg, rgba(37,200,115,.1), rgba(217,173,69,.06));
+            overflow: hidden;
+            transition: .35s;
+        }
+
+        .title-card::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green), var(--gold));
+        }
+
+        .title-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            box-shadow: 0 18px 45px rgba(37,200,115,.12);
+        }
+
+        .title-label {
+            display: block;
+            margin-bottom: 20px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .title-name {
+            display: block;
+            color: var(--gold-light);
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        .title-name::before {
+            content: "✦";
+            display: block;
+            margin-bottom: 10px;
+            color: var(--green-light);
+            font-size: 18px;
         }
 
         /* =========================
@@ -629,13 +889,35 @@
 
         .dev {
             margin-top: 28px;
-            font-size: 12px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(37,200,115,.2);
+            font-size: 16px;
             color: #777;
         }
 
-        .dev span {
+        .dev-title {
+            margin-bottom: 14px;
             color: var(--gold);
+            font-size: 20px;
             font-weight: 900;
+        }
+
+        .dev-names {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            color: var(--text);
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .dev-names span {
+            min-width: 210px;
+            padding: 12px 20px;
+            border-right: 3px solid var(--gold);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            background: rgba(10,13,17,.8);
         }
 
         /* =========================
@@ -690,7 +972,9 @@
 
             .rules,
             .documents,
-            .leadership {
+            .leadership,
+            .protocols,
+            .titles-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -737,17 +1021,22 @@
     <div class="stars"></div>
     <div class="stars2"></div>
     <div class="stars3"></div>
+    <div id="mouseStars"></div>
+    <div id="cursor-ring"></div>
+    <div id="cursor-dot"></div>
 
     <!-- Header -->
     <header>
         <div class="brand">
-            <div class="brand-icon">✦</div>
+            <img class="brand-logo" src="border-guard-logo.png" alt="شعار حرس الحدود">
             <div>حرس الحدود</div>
         </div>
 
         <nav>
             <a href="#home">الرئيسية</a>
             <a href="#leadership">القيادات</a>
+            <a href="#titles">المسميات</a>
+            <a href="#protocols">البروتوكولات</a>
             <a href="#rules">القوانين</a>
             <a href="#documents">المستندات</a>
         </nav>
@@ -758,6 +1047,8 @@
     <section class="hero" id="home">
 
         <div class="hero-content">
+
+            <img class="hero-logo" src="border-guard-logo.png" alt="شعار حرس الحدود">
 
             <div class="badge">
                 <span></span>
@@ -845,6 +1136,137 @@
             <div class="leader">
                 <span class="leader-role">مساعد قائد حرس الحدود</span>
                 <span class="leader-name">هيال العتيبي</span>
+            </div>
+
+            <div class="leader">
+                <span class="leader-role">نائب مساعد القائد</span>
+                <span class="leader-name">تركي بن عبد الرحمن</span>
+            </div>
+
+            <div class="leader">
+                <span class="leader-role">نائب مساعد القائد</span>
+                <span class="leader-name">ياسر القحطاني</span>
+            </div>
+
+            <div class="leader">
+                <span class="leader-role">نائب مساعد القائد</span>
+                <span class="leader-name">عبد الرحمن القحطاني</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Titles -->
+    <section class="section" id="titles">
+
+        <div class="section-title">
+            <div class="small">BORDER GUARD TITLES</div>
+            <h2>المسميات</h2>
+            <p>المسميات المعتمدة حسب نطاق الرتب</p>
+        </div>
+
+        <div class="titles-grid">
+
+            <div class="title-card">
+                <span class="title-label">عقيد إلى فريق أول</span>
+                <span class="title-name">درع</span>
+            </div>
+
+            <div class="title-card">
+                <span class="title-label">رائد إلى مقدم</span>
+                <span class="title-name">سهم</span>
+            </div>
+
+            <div class="title-card">
+                <span class="title-label">ملازم إلى نقيب</span>
+                <span class="title-name">برق</span>
+            </div>
+
+            <div class="title-card">
+                <span class="title-label">رقيب إلى رئيس رقباء</span>
+                <span class="title-name">ردع</span>
+            </div>
+
+            <div class="title-card">
+                <span class="title-label">من جندي إلى وكيل رقيب</span>
+                <span class="title-name">حرس</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Protocols -->
+    <section class="section" id="protocols">
+
+        <div class="section-title">
+            <div class="small">BORDER GUARD PROTOCOLS</div>
+            <h2>بروتوكولات الاتصال</h2>
+            <p>الأكواد المعتمدة للتواصل السريع أثناء العمل</p>
+        </div>
+
+        <div class="protocols">
+
+            <div class="protocol">
+                <span class="protocol-code">Code - 1</span>
+                <h3>الوضع أمن</h3>
+                <p>استخدام الكود عند استقرار الوضع وعدم وجود حالة طارئة.</p>
+            </div>
+
+            <div class="protocol">
+                <span class="protocol-code">Code - 2</span>
+                <h3>محتاج وحدة نقل</h3>
+                <p>طلب وحدة نقل للمساندة أو لنقل الأفراد والموقوفين.</p>
+            </div>
+
+            <div class="protocol">
+                <span class="protocol-code">Code - 3</span>
+                <h3>مواطنون أو عسكر مسقطون</h3>
+                <p>الإبلاغ عن وجود مواطنين أو عسكريين مسقطين في الموقع.</p>
+            </div>
+
+            <div class="protocol">
+                <span class="protocol-code">Code - 4</span>
+                <h3>وحدات دعم أو احتياط</h3>
+                <p>طلب وحدات دعم إضافية أو وحدات احتياط عند الحاجة.</p>
+            </div>
+
+            <div class="protocol">
+                <span class="protocol-code">Code - 5</span>
+                <h3>تعامل مع مواطن أو حالة</h3>
+                <p>الإبلاغ عن مباشرة التعامل مع مواطن أو حالة ميدانية.</p>
+            </div>
+
+            <div class="protocol">
+                <span class="protocol-code">Code - 6</span>
+                <h3>مهرب أمامك</h3>
+                <p>التنبيه عن وجود مهرب أمام الوحدة لاتخاذ الإجراء المناسب.</p>
+            </div>
+
+            <div class="protocol">
+                <span class="protocol-code">Code - 7</span>
+                <h3>العودة للموجة</h3>
+                <p>الإعلان عن العودة إلى موجة الاتصال الأساسية.</p>
+            </div>
+
+            <div class="protocol">
+                <span class="protocol-code">Code - 8</span>
+                <h3>هروب من نقطة تفتيش</h3>
+                <p>الإبلاغ عن هروب شخص أو مركبة من نقطة التفتيش.</p>
+            </div>
+
+            <div class="protocol">
+                <span class="protocol-code">Code - 9</span>
+                <h3>إطلاق نار</h3>
+                <p>التنبيه الفوري عن وجود إطلاق نار في الموقع.</p>
+            </div>
+
+            <div class="protocol-alert">
+                <strong>حالة 70</strong>
+                <span>بلاغ عن وجود قلتش أو خلل فني يحتاج إلى متابعة.</span>
             </div>
 
         </div>
@@ -1041,6 +1463,66 @@
 
             </div>
 
+
+            <div class="document-card">
+
+                <div class="doc-icon">▦</div>
+
+                <h3>جدول المعتمدين</h3>
+
+                <p>
+                    الاطلاع على جدول المعتمدين والبيانات الخاصة بهم.
+                </p>
+
+                <a class="doc-link"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   href="https://docs.google.com/spreadsheets/d/1-ihG5LLNdqGh7K_OnzcEb-t_zhJTrbjYFQ--F_EzqBA/edit?gid=732221017#gid=732221017">
+                    فتح جدول المعتمدين ←
+                </a>
+
+            </div>
+
+
+            <div class="document-card">
+
+                <div class="doc-icon">▤</div>
+
+                <h3>شروط الترقية</h3>
+
+                <p>
+                    مراجعة الشروط والضوابط المعتمدة للترقية.
+                </p>
+
+                <a class="doc-link"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   href="https://docs.google.com/spreadsheets/d/1-ihG5LLNdqGh7K_OnzcEb-t_zhJTrbjYFQ--F_EzqBA/edit?gid=1436326447#gid=1436326447">
+                    فتح شروط الترقية ←
+                </a>
+
+            </div>
+
+
+            <div class="document-card">
+
+                <div class="doc-icon">▤</div>
+
+                <h3>شروط الترقية للمعتمدين والإدارة</h3>
+
+                <p>
+                    الشروط الخاصة بترقية المعتمدين وأفراد الإدارة.
+                </p>
+
+                <a class="doc-link"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   href="https://docs.google.com/spreadsheets/d/1-ihG5LLNdqGh7K_OnzcEb-t_zhJTrbjYFQ--F_EzqBA/edit?gid=2004626336#gid=2004626336">
+                    فتح الشروط ←
+                </a>
+
+            </div>
+
         </div>
 
     </section>
@@ -1058,7 +1540,11 @@
         </p>
 
         <div class="dev">
-            DEV — تصميم <span>سهم العتيبي</span>
+            <div class="dev-title">DEV</div>
+            <div class="dev-names">
+                <span>هيال العتيبي</span>
+                <span>دهام الدوسري</span>
+            </div>
         </div>
 
     </footer>
@@ -1098,7 +1584,7 @@
         // ظهور البطاقات أثناء النزول
         // ==========================
 
-        const cards = document.querySelectorAll(".rule, .document-card, .stat");
+        const cards = document.querySelectorAll(".rule, .document-card, .stat, .protocol");
 
         const observer = new IntersectionObserver((entries) => {
 
@@ -1134,13 +1620,41 @@
         // تأثير حركة خفيف مع الماوس
         // ==========================
 
+        const mouseStars = document.getElementById("mouseStars");
+        const cursorDot = document.getElementById("cursor-dot");
+        const cursorRing = document.getElementById("cursor-ring");
+        let lastStarTime = 0;
+
         document.addEventListener("mousemove", (e) => {
+
+            cursorDot.style.left = `${e.clientX}px`;
+            cursorDot.style.top = `${e.clientY}px`;
+            cursorRing.animate(
+                { left: `${e.clientX}px`, top: `${e.clientY}px` },
+                { duration: 70, fill: "forwards", easing: "linear" }
+            );
 
             const x = (e.clientX / window.innerWidth - 0.5) * 10;
             const y = (e.clientY / window.innerHeight - 0.5) * 10;
 
             document.querySelector(".hero-content").style.transform =
                 `translate(${x * .15}px, ${y * .15}px)`;
+
+            const now = Date.now();
+            if (now - lastStarTime < 35) return;
+            lastStarTime = now;
+
+            const star = document.createElement("span");
+            star.className = "mouse-star";
+            star.style.left = `${e.clientX + (Math.random() * 14 - 7)}px`;
+            star.style.top = `${e.clientY + (Math.random() * 14 - 7)}px`;
+            star.style.setProperty(
+                "--star-color",
+                Math.random() > .5 ? "#a4ffc2" : "#ffe7a0"
+            );
+            mouseStars.appendChild(star);
+
+            star.addEventListener("animationend", () => star.remove());
 
         });
 
